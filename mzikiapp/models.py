@@ -15,6 +15,9 @@ class Venue(models.Model):
     seeking_talent = models.BooleanField
     seeking_description = models.CharField
     artists = models.ForeignKey("Artist",on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = 'venue'
        
     def __str__(self) :
         return self.name
