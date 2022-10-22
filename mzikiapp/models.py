@@ -2,7 +2,6 @@ from django.db import models
 
 # Create your models here.
 class Venue(models.Model):
-    id = models.IntegerField(primary_key=True)
     name = models.CharField(unique=True)
     city = models.CharField(max_length=120,null=False)
     state = models.CharField(max_length=120,null=False)
