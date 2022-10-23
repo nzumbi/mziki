@@ -20,3 +20,22 @@ class Venue(models.Model):
        
     def __str__(self) :
         return self.name
+
+class Artist(models.Model):
+    name = models.CharField(unique=True)
+    city = models.CharField(max_length=120,null=False)
+    state = models.CharField(max_length=120,null=False)
+    phone = models.CharField(max_length=120)
+    image_link = models.CharField(max_length=500)
+    genres = models.CharField#array
+    facebook_link = models.URLField(max_length=500)
+    website = models.URLField(max_length=120)
+    seeking_venue = models.BooleanField
+    seeking_description = models.CharField
+    venue = models.ForeignKey(Venue,on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = 'artist'
+
+    def __str__(self) :
+        return self.name
