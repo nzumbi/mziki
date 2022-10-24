@@ -39,3 +39,14 @@ class Artist(models.Model):
 
     def __str__(self) :
         return self.name
+
+class Show(models.Model):
+    venue = models.ForeignKey('Venue', on_delete=models.CASCADE,related_name='shows')
+    artist = models.ForeignKey('Artist', on_delete=models.CASCADE,related_name='shows')
+    start_time = models.DateField()
+
+    class Meta:
+        db_table = 'show'
+
+    def __str__(self) :
+        return self.name
