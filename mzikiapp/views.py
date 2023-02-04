@@ -55,6 +55,18 @@ def show_venue(venue_id):
   all_past_shows = db.session.query(Show).join(Venue).filter(Show.venue_id==venue_id).filter(Show.start_time<datetime.now()).all()
   past_shows_list = []
 
+  for past_show in all_past_shows:
+    past_shows_list.append({
+      "artist_id": past_show.artist_id,
+      "artist_name": past_show.artist.name,
+      "artist_image_link": past_show.artist.image_link,
+      "start_time": format_datetime(str(past_show.start_time))
+    })
+
+  data['past_shows'] = past_shows_list
+  data['past_shows_count'] = len(past_shows_list)
+
+  
 
 
 
