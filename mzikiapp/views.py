@@ -80,7 +80,8 @@ def show_venue(venue_id):
   data['upcoming_shows'] = upcoming_shows_list
   data['upcoming_shows_count'] = len(upcoming_shows_list)
 
- 
+  return render_template('pages/show_venue.html', venue=data)
+
   
 
 
