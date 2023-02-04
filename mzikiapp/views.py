@@ -66,6 +66,21 @@ def show_venue(venue_id):
   data['past_shows'] = past_shows_list
   data['past_shows_count'] = len(past_shows_list)
 
+  all_upcoming_shows = db.session.query(Show).join(Venue).filter(Show.venue_id==venue_id).filter(Show.start_time>datetime.now()).all()
+  upcoming_shows_list = []
+
+  for upcomming_show in all_upcoming_shows:
+    upcoming_shows_list.append({
+      "artist_id": upcomming_show.artist_id,
+      "artist_name": upcomming_show.artist.name,
+      "artist_image_link": upcomming_show.artist.image_link,
+      "start_time": format_datetime(str(upcomming_show.start_time)) 
+    })
+
+  data['upcoming_shows'] = upcoming_shows_list
+  data['upcoming_shows_count'] = len(upcoming_shows_list)
+
+ 
   
 
 
