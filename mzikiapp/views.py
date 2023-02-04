@@ -52,6 +52,9 @@ def show_venue(venue_id):
     "past_shows_count": 0,
     "upcoming_shows_count": 0,
   }
+  all_past_shows = db.session.query(Show).join(Venue).filter(Show.venue_id==venue_id).filter(Show.start_time<datetime.now()).all()
+  past_shows_list = []
+
 
 
 
