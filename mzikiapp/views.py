@@ -8,7 +8,6 @@ def index(request):
         return render(request, "mzikiapp/home.html")
         
 def venues():
-  # TODO: replace with real venues data.
   data = []
   groups = db.session.query(Venue.city, Venue.state).group_by(Venue.city, Venue.state).all()
   if not groups: 
